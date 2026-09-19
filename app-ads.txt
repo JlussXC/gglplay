@@ -1,9 +1,9 @@
 #################
 #app-ads.txt file
-#Updated: 15 July 2026
+#Updated: 19 September 2026
 #################
 #CONTACT=jlpatrelo12@gmail.com
-#OWNERDOMAIN=ads-txt.site
+#OWNERDOMAIN=gglplay.vercel.app
 ################
 MANAGERDOMAIN=yodo1.com
 ###############
