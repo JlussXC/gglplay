@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YourGame — Developer Page</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0D1117;
+      --surface:   #161B22;
+      --border:    #21262D;
+      --text:      #E8EDF2;
+      --muted:     #8B949E;
+      --accent:    #7C3AED;
+      --accent-lt: #9D5CF6;
+    }
+
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg:      #F6F8FA;
+        --surface: #FFFFFF;
+        --border:  #D0D7DE;
+        --text:    #1C2128;
+        --muted:   #57606A;
+      }
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 1rem;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+    }
+
+    .nav-logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.875rem;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    /* ── LAYOUT ── */
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    section {
+      padding: 5rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    section:last-of-type { border-bottom: none; }
+
+    /* ── HERO ── */
+    #home {
+      padding-top: 6rem;
+      padding-bottom: 6rem;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: var(--accent-lt);
+      margin-bottom: 1.25rem;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2rem, 6vw, 3.25rem);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--text);
+      margin-bottom: 1.25rem;
+    }
+
+    h1 span {
+      color: var(--accent-lt);
+    }
+
+    .hero-desc {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 520px;
+      margin-bottom: 2rem;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 0.65rem 1.4rem;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background 0.15s;
+    }
+
+    .btn:hover { background: var(--accent-lt); }
+
+    /* ── SECTION HEADINGS ── */
+    h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: var(--text);
+    }
+
+    h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-top: 2rem;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+    }
+
+    p { color: var(--muted); margin-bottom: 1rem; }
+    p:last-child { margin-bottom: 0; }
+
+    ul {
+      color: var(--muted);
+      padding-left: 1.25rem;
+      margin-bottom: 1rem;
+    }
+
+    ul li { margin-bottom: 0.35rem; }
+
+    /* ── POLICY CARD ── */
+    .policy-meta {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .policy-meta span {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .policy-meta strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    /* ── CONTACT ── */
+    .contact-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.75rem;
+    }
+
+    .contact-card p { margin-bottom: 1rem; }
+
+    .contact-link {
+      color: var(--accent-lt);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .contact-link:hover { text-decoration: underline; }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 2rem 1.5rem;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+
+    footer a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    footer a:hover { color: var(--text); }
+
+    @media (max-width: 480px) {
+      nav { padding: 0 1rem; }
+      .nav-links { gap: 1rem; }
+      section { padding: 3.5rem 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#home" class="nav-logo">YourGame</a>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#privacy">Privacy</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="home">
+    <div class="container">
+      <span class="eyebrow">Indie Mobile Game</span>
+      <h1>Made by one person,<br><span>played by many.</span></h1>
+      <p class="hero-desc">
+        YourGame is an independently developed mobile game. This is the official developer page — home to our privacy policy, contact info, and legal documentation required by app stores.
+      </p>
+      <a href="#privacy" class="btn">Read Privacy Policy</a>
+    </div>
+  </section>
+
+  <!-- PRIVACY POLICY -->
+  <section id="privacy">
+    <div class="container">
+      <h2>Privacy Policy</h2>
+
+      <div class="policy-meta">
+        <span><strong>App:</strong> YourGame</span>
+        <span><strong>Developer:</strong> [Your Name / Studio Name]</span>
+        <span><strong>Last updated:</strong> September 2026</span>
+        <span><strong>Effective:</strong> September 2026</span>
+      </div>
+
+      <p>
+        This Privacy Policy describes how YourGame ("we", "our", or "us") handles information when you use our mobile game ("the App"). We are committed to being transparent about our data practices.
+      </p>
+
+      <h3>Information We Collect</h3>
+      <p>We do not directly collect personal information from users. However, the third-party advertising and analytics SDKs integrated into our App may collect the following:</p>
+      <ul>
+        <li>Device identifiers (e.g. Advertising ID, IDFA)</li>
+        <li>IP address and approximate location</li>
+        <li>Device type, OS version, and language</li>
+        <li>In-app interactions and session data for analytics</li>
+        <li>Ad interaction data (impressions, clicks)</li>
+      </ul>
+
+      <h3>How We Use Information</h3>
+      <p>Any data collected by third-party SDKs is used to:</p>
+      <ul>
+        <li>Display relevant advertisements</li>
+        <li>Measure ad performance and campaign effectiveness</li>
+        <li>Improve app stability and user experience</li>
+        <li>Comply with legal obligations</li>
+      </ul>
+
+      <h3>Third-Party Services</h3>
+      <p>
+        Our App uses Yodo1 MAS (Managed Ads Service) for ad monetization, which integrates multiple ad networks including Google AdMob, AppLovin, Meta Audience Network, Unity Ads, IronSource, and others. Each of these services operates under its own privacy policy. We encourage you to review them:
+      </p>
+      <ul>
+        <li><a class="contact-link" href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google / AdMob Privacy Policy</a></li>
+        <li><a class="contact-link" href="https://www.applovin.com/privacy/" target="_blank" rel="noopener">AppLovin Privacy Policy</a></li>
+        <li><a class="contact-link" href="https://www.facebook.com/privacy/policy/" target="_blank" rel="noopener">Meta Privacy Policy</a></li>
+        <li><a class="contact-link" href="https://unity.com/legal/privacy-policy" target="_blank" rel="noopener">Unity Privacy Policy</a></li>
+        <li><a class="contact-link" href="https://www.is.com/privacy-policy/" target="_blank" rel="noopener">IronSource Privacy Policy</a></li>
+        <li><a class="contact-link" href="https://www.yodo1.com/privacy-policy/" target="_blank" rel="noopener">Yodo1 Privacy Policy</a></li>
+      </ul>
+
+      <h3>Children's Privacy</h3>
+      <p>
+        Our App is not directed at children under the age of 13. We do not knowingly collect personal information from children. If you believe a child has provided personal information through our App, please contact us and we will take steps to delete that information.
+      </p>
+
+      <h3>Your Rights</h3>
+      <p>Depending on your location, you may have the right to:</p>
+      <ul>
+        <li>Access or delete personal data collected about you</li>
+        <li>Opt out of targeted advertising (via your device's ad settings)</li>
+        <li>Withdraw consent at any time where processing is based on consent</li>
+      </ul>
+      <p>
+        On Android, you can reset or opt out of personalized ads via <strong>Settings → Google → Ads</strong>. On iOS, go to <strong>Settings → Privacy → Tracking</strong>.
+      </p>
+
+      <h3>Data Retention</h3>
+      <p>
+        We do not store personal data on our own servers. Third-party SDKs retain data according to their own policies. Please refer to the respective privacy policies linked above.
+      </p>
+
+      <h3>Security</h3>
+      <p>
+        We take reasonable steps to protect information collected through our App. However, no method of transmission over the internet is 100% secure.
+      </p>
+
+      <h3>Changes to This Policy</h3>
+      <p>
+        We may update this Privacy Policy from time to time. Changes will be reflected by the "Last updated" date at the top of this page. Continued use of the App after changes constitutes acceptance of the updated policy.
+      </p>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <h2>Contact</h2>
+      <div class="contact-card">
+        <p>
+          Questions about this privacy policy, data requests, or anything else — reach out directly. We try to respond within a few business days.
+        </p>
+        <p>
+          Email: <a class="contact-link" href="mailto:contact@yourgame.com">contact@yourgame.com</a>
+        </p>
+        <p style="margin-top:1rem; font-size:0.85rem;">
+          Developer: [Your Name / Studio Name]<br>
+          App: YourGame<br>
+          Platform: Google Play / App Store
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div>
+      &copy; 2026 YourGame &nbsp;·&nbsp;
+      <a href="#privacy">Privacy Policy</a> &nbsp;·&nbsp;
+      <a href="/app-ads.txt">app-ads.txt</a>
+    </div>
+    <div style="margin-top:0.4rem;">
+      All rights reserved.
+    </div>
+  </footer>
+
+</body>
+</html>
